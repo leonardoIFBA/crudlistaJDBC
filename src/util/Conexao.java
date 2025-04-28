@@ -13,9 +13,9 @@ public class Conexao {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //Passei os parametros diretamente para a função
-            //conexao = DriverManager.getConnection("jdbc:mysql://10.28.0.35:3306/demojpa", "remoto", "remoto");
             //conexao = DriverManager.getConnection("jdbc:mysql://localhost:3306/listacrud?createDatabaseIfNotExist=true", "root", "");
             conexao = DriverManager.getConnection(url, usuario, senha);
+            System.out.println("Conexão efetuada com sucesso.");
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("Não foi possível se conectar ao banco");
             e.printStackTrace();
