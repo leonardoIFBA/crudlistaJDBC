@@ -1,6 +1,9 @@
 package repository;
 
+
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import model.Pessoa;
 import util.Conexao;
@@ -31,5 +34,33 @@ public class PessoaRepository {
             e.printStackTrace();
         }
     }
-}
 
+    public List<Pessoa> listarTodos(){
+        // criar a lista que vai ser retornada
+        List<Pessoa> pessoas = new ArrayList<>();
+        // monta a consulta sql para inserir no BD
+        String sql = "select * from pessoa";
+        // preperar a conexao conexao e a consulta para execução
+        try(Connection con = Conexao.getConexao();
+            PreparedStatement ps = con.prepareStatement(sql)){
+                // guarda em RS o resultado da consulta no BD
+                ResultSet rs = ps.executeQuery();
+                // percorre o RS e carrega na lista de Pessoas
+                while (rs.next()) {
+                    Pessoa p = new Pessoa();
+                    p.setId(rs.getInt("id"));
+                    p.setNome(rs.getString("nome"));
+                    p.setIdade(rs.getInt("idade"));
+
+                    // addicona a pessoa na lista
+                    pessoas.add(p);                    
+                }
+
+            }catch (SQLException e) {
+                // TODO: handle exception
+                e.printStackTrace();
+            }
+
+        return pessoas;
+    }
+}
