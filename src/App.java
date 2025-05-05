@@ -20,5 +20,13 @@ public class App {
         rep.inserir(p2);
         rep.inserir(p3);*/
         System.out.println(rep.listarTodos());
+        //System.out.println(rep.buscarPorId(1));
+        Pessoa alt = rep.buscarPorId(1);
+        alt.setNome("Leonardo");
+        rep.alterar(alt);
+        System.out.println(rep.listarTodos());
+        rep.excluir(1);
+        System.out.println(rep.listarTodos());
+        
     }
 }

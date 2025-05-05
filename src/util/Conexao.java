@@ -7,9 +7,9 @@ import java.sql.SQLException;
 public class Conexao {
     public static Connection getConexao(){
         Connection conexao = null;
-        String url = "jdbc:mysql://localhost:3306/listacrud?createDatabaseIfNotExist=true";
-        String usuario = "root";
-        String senha = "";
+        String url = "jdbc:mysql://10.28.0.35:3306/crudlista?createDatabaseIfNotExist=true";
+        String usuario = "remoto";
+        String senha = "remoto";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             //Passei os parametros diretamente para a função
